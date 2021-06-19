@@ -1,0 +1,33 @@
+version: '3.6'
+services:
+  nginx:
+    build: docker/nginx
+    ports:
+      - '8080:80'
+    volumes:
+      - './:/var/www'
+      - './docker/nginx/log:/var/log/nginx/'
+
+  php-fpm:
+    build: docker/php-fpm
+    volumes:
+      - './:/var/www'
+
+  mariadb:
+    image: 'mariadb:10.3'
+    environment:
+      - MYSQL_DATABASE=budget
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=root
+      -
+      - MYSQL_RANDOM_ROOT_PASSWORD=yes
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    depends_on:
+      - mariadb
+    ports:
+      - "8081:80"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      PMA_HOST: mariadb
