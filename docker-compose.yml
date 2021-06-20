@@ -19,7 +19,6 @@ services:
       - MYSQL_DATABASE=budget
       - MYSQL_USER=root
       - MYSQL_PASSWORD=root
-      -
       - MYSQL_RANDOM_ROOT_PASSWORD=yes
 
   phpmyadmin:
