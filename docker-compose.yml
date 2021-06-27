@@ -16,11 +16,10 @@ services:
   mariadb:
     image: 'mariadb:10.3'
     environment:
-      - MYSQL_DATABASE=budget
-      - MYSQL_USER=root
-      - MYSQL_PASSWORD=root
-      -
-      - MYSQL_RANDOM_ROOT_PASSWORD=yes
+      - MARIADB_DATABASE=budget
+      - MARIADB_ROOT_USER=root
+      - MARIADB_ROOT_PASSWORD=root
+      - ALLOW_EMPTY_PASSWORD=yes
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
